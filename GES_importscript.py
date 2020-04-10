@@ -17,7 +17,7 @@ bg.source = "MOVIE_CLIP"
 
 # load JSON file for evaluation
 # Sample format: jfilename = "D:/Local/Project/Beach/beach.json"
-jfilename = "D:/Local/Project/Beach/beach.json"
+jfilename = "D:/Local/Project/Beach/beach/beach.json"
 
 jfile = open(jfilename,'r')
 camdata = json.load(jfile)
