@@ -128,8 +128,8 @@ for f in range (0,s_end + 1):
     
     cam.rotation_euler = eul
   
-    cam.keyframe_insert(data_path="location", index=-1, frame=f + 1)
-    cam.keyframe_insert(data_path="rotation_euler", index=-1, frame=f + 1)
+    cam.keyframe_insert(data_path="location", index=-1, frame=f)
+    cam.keyframe_insert(data_path="rotation_euler", index=-1, frame=f)
     
     
 # camera "lens" based on 20 degree Filed of View (default value)
