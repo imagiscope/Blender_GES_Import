@@ -27,19 +27,21 @@ class GESIO_PT_Panel(bpy.types.Panel):
 
         col = layout.column()
         row = col.row()
-        row.label(text="First Image Path (*_000):")
+        row.label(text="First Image (*_000):")
         row = col.row()
         row.prop(bpy.context.scene.GESIO_OT_Paths, "footage_path", text="")
 
         col = layout.column()
         row = col.row()
-        row.label(text="Scene Export (.json):")
+        row.label(text="3D Tracking Data (.json):")
         row = col.row()
         row.prop(bpy.context.scene.GESIO_OT_Paths, "json_path", text="")
 
         row = col.row()
         row = col.row()
-        row.prop(bpy.context.scene.GESIO_OT_Paths, "scale")
+        row.prop(bpy.context.scene.GESIO_OT_Paths,
+                 "scale",
+                 text="Shrink Factor")
 
         row = col.row()
         row = col.row()
