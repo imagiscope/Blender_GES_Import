@@ -11,6 +11,7 @@ class GESIO_OT_ImportSceneOperator(bpy.types.Operator):
     def execute(self, context):
         cam = bpy.context.scene.camera
         globalsale = bpy.context.scene.GESIO_OT_Paths.scale
+        globalshrink = 1.0 / globalsale
 
         scene = bpy.context.scene
         # load the GES render files as background for camera
@@ -85,13 +86,13 @@ class GESIO_OT_ImportSceneOperator(bpy.types.Operator):
             trk = bpy.context.selected_objects[0]
             trk.name = camdata["trackPoints"][f]["name"]
 
-            trk.location.x = (px - psx) / globalsale
-            trk.location.y = (py - psy) / globalsale
-            trk.location.z = (pz - psz) / globalsale
+            trk.location.x = (px - psx)
+            trk.location.y = (py - psy)
+            trk.location.z = (pz - psz)
 
             trk.rotation_euler[1] = math.radians(90 - rlng)
             trk.rotation_euler[2] = math.radians(rlat)
-            trk.scale = (0.1, 0.1, 0.1)
+            trk.scale = (globalsale / 2, globalsale / 2, globalsale / 2)
 
             if f == 0:
                 # create parent object - parent used to align position on earth with Blender global coordinates
@@ -134,9 +135,9 @@ class GESIO_OT_ImportSceneOperator(bpy.types.Operator):
             rz = camdata["cameraFrames"][f]["rotation"]["z"]
 
             # position set in relation to first frame - scale to 1/100
-            cam.location.x = (px - psx) / globalsale
-            cam.location.y = (py - psy) / globalsale
-            cam.location.z = (pz - psz) / globalsale
+            cam.location.x = (px - psx)
+            cam.location.y = (py - psy)
+            cam.location.z = (pz - psz)
 
             eul = mathutils.Euler((0.0, 0.0, 0.0), 'XYZ')
 
@@ -166,6 +167,8 @@ class GESIO_OT_ImportSceneOperator(bpy.types.Operator):
 
         # move camera to GES parent
         cam.parent = ges_parent
+        ges_parent.scale = (globalshrink, globalshrink, globalshrink)
+        ges_parent.empty_display_size = globalsale
 
         bpy.context.scene.frame_current = 0
 
