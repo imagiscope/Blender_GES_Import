@@ -1,6 +1,6 @@
 # Blender_GES_Import
 
-NOTE: USE THE EARTH STUDIO TOOLS - BUILT IN CONTROL VIA PANEL ADD-ON (MUCH EAISER)
+NOTE: USE THE EARTH STUDIO TOOLS - BUILT IN CONTROL VIA PANEL ADD-ON (MUCH EASIER)
 
 Import Script for Google Earth Studio (Camera, Trackpoints, Rendered Images) into Blender for 3D Augmentation 
 
